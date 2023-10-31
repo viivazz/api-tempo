@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="/static/login_form.css">
+
+</head>
+<body>
+    <h1>Login</h1>
+    <form method="POST" action="/login">
+        <label for="username">Nome de Usuário:</label>
+        <input type="text" id="username" name="username" required>
+        <br>
+        <label for="api_key">APIKey:</label>
+        <input type="text" id="api_key" name="api_key" required>
+        <br>
+        <input type="submit" value="Login">
+    </form>
+</body>
+</html>

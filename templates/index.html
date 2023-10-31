@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registro de Usuário</title>
+    <link rel="stylesheet" type="text/css" href="/static/index.css">
+</head>
+<body>
+    <h1>Registro de Usuário</h1>
+    <form method="POST" action="/register">
+        <label for="username">Nome de Usuário:</label>
+        <input type="text" id="username" name="username" required>
+        <br>
+        <input type="submit" value="Registrar">
+    </form>
+    
+    <!-- Adicione o botão de login -->
+    <form method="GET" action="/login">
+        <input type="submit" value="Login">
+    </form>
+</body>
+</html>

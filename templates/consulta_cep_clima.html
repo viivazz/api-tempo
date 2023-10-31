@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Previsão do Tempo</title>
+    <link rel="stylesheet" type="text/css" href="/static/styles.css">
+</head>
+<body>
+    <h1>Previsão do Tempo</h1>
+
+    <form action="/consultar_cep_clima" method="post">
+        <label for="cep">CEP:</label>
+        <input type="text" id="cep" name="cep" required>
+        <button type="submit">Consultar Clima</button>
+    </form>
+
+    {% if dados_clima %}
+    <div class="weather-card">
+        <h2>Cidade: {{ dados_clima.results.city_name }}</h2>
+            <p>Data: {{ dados_clima.results.date }}</p>
+            <p>Condição: {{ dados_clima.results.description }}</p>
+            <p>Temperatura Atual: {{ dados_clima.results.temp }}°C</p>
+            <p>Umidade: {{ dados_clima.results.humidity }}%</p>
+            <p>Probabilidade de Chuva: {{ dados_clima.results.cloudiness }}%</p>
+            <p>Velocidade do Vento: {{ dados_clima.results.wind_speedy }}</p>
+            <p>Direção do Vento: {{ dados_clima.results.wind_direction }} ({{ dados_clima.results.wind_cardinal }})</p>
+            <p>Nascer do Sol: {{ dados_clima.results.sunrise }}</p>
+            <p>Pôr do Sol: {{ dados_clima.results.sunset }}</p>
+        </div>
+        <div class="forecast">
+            <h2>Previsão para os próximos dias</h2>
+            {% for dia in dados_clima.results.forecast %}
+                <div class="day">
+                    <p>Data: {{ dia.date }}</p>
+                    <p>Condição: {{ dia.description }}</p>
+                    <p>Temperatura Máxima: {{ dia.max }}°C</p>
+                    <p>Temperatura Mínima: {{ dia.min }}°C</p>
+                    <p>Probabilidade de Chuva: {{ dia.rain_probability }}%</p>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>Consulte a previsão do tempo informando o CEP acima.</p>
+    {% endif %}
+</body>
+</html>
